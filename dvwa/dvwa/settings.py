@@ -13,6 +13,16 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from pathlib import Path
 import os
 
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
+# print("ENV", os.environ.items())
+# Access environment variables
+DB_NAME = os.getenv('DB_NAME')
+DB_USERNAME = os.getenv('DB_USERNAME')
+DB_PASSWORD = os.getenv('DB_PASSWORD')
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -88,17 +98,17 @@ DATABASES = {
         "ENGINE": "django.db.backends.mysql",
         "HOST": "mysql",
         "PORT": "3306",
-        "NAME": "vaccine",
-        "USER": "admin",
-        "PASSWORD": "password",
+        "NAME": DB_NAME,
+        "USER": DB_USERNAME,
+        "PASSWORD": DB_PASSWORD,
     },
     "pgsql": {
         "ENGINE": "django.db.backends.postgresql",
         "HOST": "pgsql",
         "PORT": "5432",
-        "NAME": "vaccine",
-        "USER": "admin",
-        "PASSWORD": "password",
+        "NAME": DB_NAME,
+        "USER": DB_USERNAME,
+        "PASSWORD": DB_PASSWORD,
     },
 }
 

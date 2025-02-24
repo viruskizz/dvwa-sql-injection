@@ -6,6 +6,7 @@ services:
       context: dvwa
     volumes:
       - ./dvwa:/app
+      - .env:/app
     networks:
       - web
     ports:
