@@ -1,5 +1,4 @@
 NAME=dvwa
-DVWA_FILE=docker-compose.yml
 
 $(NAME): all
 
