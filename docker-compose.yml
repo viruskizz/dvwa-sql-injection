@@ -1,7 +1,7 @@
 services:
-  dvwa:
-    container_name: vaccine-dvwa
-    hostname: dvwa
+  web:
+    container_name: dvwa-web
+    hostname: web
     build:
       context: dvwa
     volumes:
@@ -19,7 +19,7 @@ services:
         condition: service_healthy
   mysql:
     image: mysql:8.0
-    container_name: vaccine-mysql
+    container_name: dvwa-mysql
     hostname: mysql
     networks:
       - web
@@ -37,7 +37,7 @@ services:
       retries: 12
   pgsql:
     image: postgres
-    container_name: vaccine-pgsql
+    container_name: dvwa-pgsql
     hostname: pgsql
     networks:
       - web

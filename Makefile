@@ -1,4 +1,4 @@
-NAME=vaccine
+NAME=dvwa
 DVWA_FILE=docker-compose.yml
 
 $(NAME): all
@@ -9,7 +9,7 @@ up:
 	docker compose up --detach --build
 
 exec:
-	docker exec -it ${NAME}-dvwa /bin/bash
+	docker exec -it ${NAME}-web /bin/bash
 
 stop:
 	docker compose stop
