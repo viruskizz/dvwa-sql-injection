@@ -6,7 +6,7 @@ services:
       context: dvwa
     volumes:
       - ./dvwa:/app
-      - .env:/app
+      - .env:/app/.env
     networks:
       - web
     ports:
@@ -25,16 +25,18 @@ services:
       - web
     volumes:
       - ./mydata:/etc/mysql/conf.d
+    expose:
+      - 33060
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: ${DB_NAME}
       MYSQL_USER: ${DB_USERNAME}
       MYSQL_PASSWORD: ${DB_PASSWORD}
     healthcheck:
-      test: ["CMD", "mysqladmin", "status", "-hlocalhost", "-p${DB_PASSWORD}", "-u${DB_USERNAME}"]
+      test: ["CMD", "mysqladmin", "status", "-hlocalhost", "-p${DB_PASSWORD}", "-u${DB_USERNAME}", "--port", "33060"]
       interval: 5s
       timeout: 5s
-      retries: 12
+      retries: 30
   pgsql:
     image: postgres
     container_name: dvwa-pgsql

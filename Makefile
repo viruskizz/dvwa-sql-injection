@@ -24,7 +24,7 @@ clean: down
 	-docker rmi -f $$(docker images --filter "dangling=true" -q --no-trunc)
 
 fclean: clean
-	sudo rm -rf pgdata mydata
-	sudo rm -rf $$(find dvwa/*/migrations ! -name __init__.py -type f)
+	-docker run --rm -v "$(PWD):/app" -w /app alpine rm -rf mydata pgdata dvwa/db.sqlite3
+	-rm -rf $$(find dvwa/*/migrations ! -name __init__.py -type f)
 
 .PHONY: up down stop clean fclean re exec
