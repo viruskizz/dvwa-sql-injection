@@ -24,16 +24,13 @@ The aim of DVWA is to practice some of the most common web vulnerabilities, with
 3. Access web on port 8000 `http://localhost:8000`
 4. Access adminer on port 8080 `http://localhost:8080`
 
-## Demo
-
-<img src="./assets/demo.gif">
-
 #### NOTE
 ```diff
-+ for 42's Machine, You need run `make fclean` every time before restart to ensure data volume is created by docker user
++ for 42's Machine, You need run `make fclean` every time
++ before restart to ensure data volume is created by docker user
 ```
 
-## Site
+### Site
 Base root path to select database type testing
 - /pgsql : `Postgresql` database testing
 - /mysql : `MySQL` database Testing
@@ -42,6 +39,10 @@ Base root path to select database type testing
 Sub path for select method testing
 - /<db_type>/ : method `GET` testing
 - /<db_type>/login : method `POST` testing
+
+## Demo
+
+<img src="./assets/demo.gif">
 
 ## DB Driver
 - [sqlite3]
