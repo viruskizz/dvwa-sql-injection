@@ -1,6 +1,6 @@
 
 <center>
-    <img src="./assets/cover.png">
+    <img src="./assets/cover.jpg">
 </center>
 
 # DAMN Vulnerable web application for testing
