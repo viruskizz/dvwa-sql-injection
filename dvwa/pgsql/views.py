@@ -43,7 +43,6 @@ def login(request):
         username = form['username'].value()
         password = form['password'].value()
         query  = f"SELECT * FROM {User.__table_name__} WHERE username = '{username}' and password = '{password}' LIMIT 1"
-        # users = User.objects.raw(query)
         try:
             db_connect = DbConnect()
             db_connect.cur.execute(query)

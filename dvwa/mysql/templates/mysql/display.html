@@ -19,27 +19,32 @@
             <h1>Retrive by id</h1>
             <form action="" method="get">
                 {{ form }}
+                {% if error_message %}
+                <p class="text-danger px-2">{{error_message}}</p>
+                {% endif %}
                 <button type="submit" class="btn btn-primary">SEARCH</button>
             </form>
         </div>
     </div>
     {% endif %}
-    {% if users|length != 0 %}
+    {% if rows|length != 0 %}
     <table class="table">
         <thead>
             <tr>
-                <th>#</th>
-                <th>First Name</th>
-                <th>Last Name</th>
+                {% for key,val in rows.0.items %}
+                <th>{{key}}</th>
+                {% endfor %}
             </tr>
         </thead>
-        {% for user in users %}
-        <tr>
-            <td>{{ user.id }}</td>
-            <td>{{ user.first_name }}</td>
-            <td>{{ user.last_name }}</td>
-        </tr>
-        {% endfor %}
+        <tbody>
+            {% for row in rows %}
+            <tr>
+                {% for key,val in row.items %}
+                <td>{{val.decode}}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
     </table>
     {% endif %}
 </div>
