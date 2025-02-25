@@ -21,4 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('mysql/', include('mysql.urls')),
     path('pgsql/', include('pgsql.urls')),
+    path('sqlite/', include('sqlite.urls')),
 ]
