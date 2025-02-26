@@ -20,7 +20,6 @@ def index(request):
         if form.is_valid():
             id = form['id'].value()
             query  = f"SELECT first_name, last_name FROM {User.__table_name__} WHERE id = '{id}'"
-            ### psycopg
             try:
                 db_connect = DbConnect()
                 db_connect.cur.execute(query)

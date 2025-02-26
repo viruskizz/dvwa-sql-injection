@@ -19,11 +19,11 @@ def index(request):
         form = UserForm(request.GET)
         if form.is_valid():
             id = form['id'].value()
-            query  = f"SELECT * FROM {User.__table_name__} WHERE id = '{id}'"
+            query  = f"SELECT first_name, last_name FROM {User.__table_name__} WHERE id = '{id}'"
             try:
                 db_connect = DbConnect()
                 db_connect.conn.query(query)
-                rows = db_connect.conn.store_result().fetch_row(how=1)
+                rows = db_connect.conn.store_result().fetch_row(how=1, maxrows=0)
                 print(rows)
             except Exception as e:
                 error_message = str(e)
